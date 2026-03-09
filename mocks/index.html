@@ -24,7 +24,7 @@
     .phone {
       width: 390px;
       height: 844px;
-      background-color: #fff;
+      background-color: #0a0a0a;
       border-radius: 48px;
       box-shadow: 0 0 0 12px #111, 0 0 0 14px #333, 0 32px 80px rgba(0,0,0,0.6);
       overflow: hidden;
@@ -35,7 +35,8 @@
 
     /* Status bar */
     .status-bar {
-      background-color: #fff;
+      background-color: #0a0a0a;
+      color: #fff;
       padding: 14px 28px 6px;
       display: flex;
       justify-content: space-between;
@@ -71,13 +72,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 1px solid #222;
     }
 
     .app-header h1 {
       font-size: 1.4rem;
       font-weight: 700;
-      color: #111;
+      color: #fff;
     }
 
     .avatar {
@@ -95,7 +96,7 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      background-color: #f8f8f8;
+      background-color: #0a0a0a;
     }
 
     .content::-webkit-scrollbar {
@@ -131,6 +132,113 @@
       font-size: 0.8rem;
       color: #888;
       line-height: 1.5;
+    }
+
+    /* Calories tracker section */
+    .calories-widget {
+      padding: 8px 4px;
+    }
+
+    .calories-widget .widget-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .calories-widget .widget-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #999;
+    }
+
+    .calories-widget .widget-date {
+      font-size: 0.75rem;
+      color: #bbb;
+    }
+
+    .calories-ring-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .ring-container {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% { stroke: #ff6b35; }
+      50%       { stroke: #cc0000; }
+    }
+
+    .ring-container svg {
+      transform: rotate(-90deg);
+    }
+
+    .ring-progress {
+      animation: pulse-ring 1s ease-in-out infinite;
+    }
+
+    .ring-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ring-label .kcal-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .ring-label .kcal-unit {
+      font-size: 0.7rem;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    .calories-stats {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+    }
+
+    .cal-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cal-stat-label {
+      font-size: 0.7rem;
+      color: #aaa;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .cal-stat-label .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .cal-stat-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
     }
 
     /* Highlight card */
@@ -171,8 +279,8 @@
 
     /* Bottom nav */
     .bottom-nav {
-      background-color: #fff;
-      border-top: 1px solid #f0f0f0;
+      background-color: #0a0a0a;
+      border-top: 1px solid #222;
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -223,6 +331,52 @@
 
     <!-- Scrollable Content -->
     <div class="content">
+
+      <!-- Calories Burned Widget -->
+      <div class="calories-widget">
+        <div class="widget-header">
+          <span class="widget-title">&#128293; Calories Burned</span>
+          <span class="widget-date">Today</span>
+        </div>
+        <div class="calories-ring-row">
+          <!-- SVG Ring -->
+          <div class="ring-container">
+            <svg width="140" height="140" viewBox="0 0 140 140">
+              <!-- Background ring -->
+              <circle cx="70" cy="70" r="58" fill="none" stroke="#333" stroke-width="12" />
+              <!-- Progress ring (75% = stroke-dasharray: 274 365) -->
+              <circle class="ring-progress" cx="70" cy="70" r="58" fill="none" stroke="#ff6b35" stroke-width="12"
+                stroke-linecap="round"
+                stroke-dasharray="274 365" />
+            </svg>
+            <div class="ring-label">
+              <span class="kcal-value">480</span>
+              <span class="kcal-unit">kcal burned</span>
+            </div>
+          </div>
+          <!-- Stats breakdown -->
+          <div class="calories-stats">
+            <div class="cal-stat">
+              <span class="cal-stat-label">
+                <span class="dot" style="background:#ff6b35;"></span> Burned
+              </span>
+              <span class="cal-stat-value">480</span>
+            </div>
+            <div class="cal-stat">
+              <span class="cal-stat-label">
+                <span class="dot" style="background:#6c63ff;"></span> Goal
+              </span>
+              <span class="cal-stat-value">640</span>
+            </div>
+            <div class="cal-stat">
+              <span class="cal-stat-label">
+                <span class="dot" style="background:#e0e0e0;"></span> Left
+              </span>
+              <span class="cal-stat-value">160</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Highlight card -->
       <div class="card highlight">
