@@ -379,23 +379,35 @@
           </div>
           <!-- Stats breakdown -->
           <div class="calories-stats">
+            <!-- Calories Eaten mini ring -->
             <div class="cal-stat">
-              <span class="cal-stat-label">
-                <span class="dot" style="background:#ff6b35;"></span> Burned
-              </span>
-              <span class="cal-stat-value">480</span>
+              <div style="position:relative;width:72px;height:72px;margin-bottom:6px;">
+                <svg width="72" height="72" viewBox="0 0 72 72" style="transform:rotate(-90deg);">
+                  <circle cx="36" cy="36" r="30" fill="none" stroke="#333" stroke-width="7"/>
+                  <circle cx="36" cy="36" r="30" fill="none" stroke="#6c63ff" stroke-width="7"
+                    stroke-linecap="round" stroke-dasharray="118 188"/>
+                </svg>
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                  <span style="font-size:0.75rem;font-weight:800;color:#fff;line-height:1;">1,240</span>
+                  <span style="font-size:0.45rem;color:#aaa;">kcal</span>
+                </div>
+              </div>
+              <span class="cal-stat-label" style="font-size:0.65rem;">Eaten</span>
             </div>
+            <!-- Calorie Deficit mini ring -->
             <div class="cal-stat">
-              <span class="cal-stat-label">
-                <span class="dot" style="background:#6c63ff;"></span> Goal
-              </span>
-              <span class="cal-stat-value">640</span>
-            </div>
-            <div class="cal-stat">
-              <span class="cal-stat-label">
-                <span class="dot" style="background:#e0e0e0;"></span> Left
-              </span>
-              <span class="cal-stat-value">160</span>
+              <div style="position:relative;width:72px;height:72px;margin-bottom:6px;">
+                <svg width="72" height="72" viewBox="0 0 72 72" style="transform:rotate(-90deg);">
+                  <circle cx="36" cy="36" r="30" fill="none" stroke="#333" stroke-width="7"/>
+                  <circle cx="36" cy="36" r="30" fill="none" stroke="#48cae4" stroke-width="7"
+                    stroke-linecap="round" stroke-dasharray="142 188"/>
+                </svg>
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                  <span style="font-size:0.75rem;font-weight:800;color:#fff;line-height:1;">760</span>
+                  <span style="font-size:0.45rem;color:#aaa;">kcal</span>
+                </div>
+              </div>
+              <span class="cal-stat-label" style="font-size:0.65rem;">Deficit</span>
             </div>
           </div>
         </div>
@@ -418,7 +430,7 @@
         <!-- Info -->
         <div style="flex:1;">
           <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#999;margin-bottom:6px;">&#127829; Calories Eaten</div>
-          <div style="display:flex;gap:16px;">
+          <div style="display:flex;gap:16px;margin-bottom:10px;">
             <div>
               <div style="font-size:0.65rem;color:#aaa;">Eaten</div>
               <div style="font-size:0.85rem;font-weight:700;color:#fff;">1,240</div>
@@ -431,6 +443,9 @@
               <div style="font-size:0.65rem;color:#aaa;">Left</div>
               <div style="font-size:0.85rem;font-weight:700;color:#fff;">960</div>
             </div>
+          </div>
+          <div style="background:#6c63ff;border-radius:8px;padding:6px 10px;text-align:center;font-size:0.7rem;font-weight:700;color:#fff;cursor:pointer;">
+            + Add Meal
           </div>
         </div>
       </div>
